@@ -1,0 +1,47 @@
+Integrated Design Pattern Problem: "Smart Home Energy Management System"
+Scenario:
+
+You are tasked with designing a core component of a sophisticated Smart Home Energy Management System (SHEMS). This system needs to:
+
+Centralize Configuration: Manage global energy policies, device priorities, and reporting settings.
+Dynamically Create Devices: Support various smart home devices (e.g., Smart Lights, Smart Thermostats, Smart Plugs) that consume or monitor energy. New device types should be easy to integrate.
+Monitor and React to Energy Events: Track real-time energy consumption and generation data from sensors and react to critical events (e.g., peak hours, sudden power surges, solar panel generation).
+Problem Description:
+
+Design the architecture for the SHEMS's core logic, incorporating the Singleton, Factory, and Observer patterns as follows:
+
+Singleton (for EnergyPolicyManager):
+
+There should be a single, globally accessible EnergyPolicyManager instance. This manager will store and enforce energy-saving policies (e.g., "reduce consumption by X% during peak hours," "prioritize solar energy usage").
+It should also hold global configuration settings for the entire SHEMS (e.g., current electricity tariff, solar panel efficiency).
+Ensure that only one instance of this manager can ever be created, regardless of how many times it's requested.
+Factory (for SmartDeviceFactory):
+
+Implement a SmartDeviceFactory responsible for creating various types of smart home devices (e.g., SmartLight, SmartThermostat, SmartPlug). Each device type will have common behaviors (e.g., turnOn(), turnOff(), getCurrentConsumption()) but specific internal implementations.
+The factory should take a device type identifier (e.g., a string like "LIGHT", "THERMOSTAT", "PLUG") and return an instance of the corresponding SmartDevice interface.
+This factory should allow for easy expansion to new device types without modifying existing client code that requests devices.
+Observer (for Energy Event Monitoring):
+
+Design an EnergySensor (e.g., GridMeter, SolarPanelSensor) that acts as a Subject. When significant energy events occur (e.g., peakHourStart, peakHourEnd, powerSurgeDetected, solarGenerationChange), this sensor should notify all interested parties.
+Various SHEMS components (e.g., the EnergyPolicyManager, individual SmartDevices, a ReportingModule) should be able to act as Observers.
+When an EnergySensor notifies its observers, the observers should react accordingly:
+The EnergyPolicyManager might adjust global policies or notify specific devices to reduce consumption.
+SmartDevices might automatically adjust their power usage (e.g., SmartLight dims, SmartThermostat raises temperature) based on events like peakHourStart and current policies.
+A ReportingModule (another observer) logs these events.
+Implementation Details to Consider:
+
+Interfaces/Abstract Classes: Define appropriate interfaces (e.g., ISmartDevice, IEnergySensor, IEnergyObserver) to promote polymorphism and loose coupling.
+Communication: How will the EnergyPolicyManager (Singleton) interact with the SmartDevices created by the Factory?
+Observer Registration: How will observers register with the EnergySensor subjects?
+Event Data: What kind of data will the EnergySensor pass to its observers during a notification?
+Error Handling (Basic): Consider basic error handling, e.g., if an invalid device type is requested from the factory.
+Example Flow (Illustrative):
+
+The EnergyPolicyManager (Singleton) is initialized, loading global energy policies.
+The SHEMS requests creation of various smart devices using the SmartDeviceFactory.
+A GridMeter (an EnergySensor subject) detects the peakHourStart event.
+The GridMeter notifies all its registered observers.
+The EnergyPolicyManager (Observer) receives the peakHourStart notification, fetches the current policy, and potentially instructs certain SmartDevices (e.g., all SmartLights) to reduce their brightness.
+Individual SmartDevices (also Observers) might directly receive notifications (e.g., peakHourStart) and autonomously adjust their consumption based on their own internal logic and the global policies from the EnergyPolicyManager.
+The ReportingModule (Observer) logs the peakHourStart event and any subsequent device adjustments.
+This problem forces you to consider not just the individual patterns but also how they interact to form a cohesive, extensible, and manageable system. Good luck!
