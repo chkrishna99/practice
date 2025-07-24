@@ -1,0 +1,31 @@
+  ICMP is a network-layer protocol.  
+
+It is a companion to the IP protocol.  
+
+Internet Control Message Protocol (ICMP) defines a collection of error messages that are sent back to the source host whenever a router or host is unable to process an IP datagram successfully. 
+
+ICMP MESSAGE TYPES  
+
+ICMP messages are divided into two broad categories: error-reporting messages and query messages.  
+
+The error-reporting messages report problems that a router or a host (destination) may encounter when it processes an IP packet.  
+
+The query messages help a host or a network manager get specific information from a router or another host. 
+
+https://images.app.goo.gl/qtzcwTLXidChZgae9
+
+ICMP Error – Reporting Messages  
+
+Destination Unreachable―When a router cannot route a datagram, the datagram is discarded and sends a destination unreachable message to source host.  
+
+Source Quench―When a router or host discards a datagram due to congestion, it sends a source-quench message to the source host. This message acts as flow control. 
+
+Time Exceeded―Router discards a datagram when TTL field becomes 0 and a time exceeded message is sent to the source host.  
+
+Parameter Problem―If a router discovers ambiguous or missing value in any field of the datagram, it discards the datagram and sends parameter problem message to source.  
+
+Redirection―Redirect messages are sent by the default router to inform the source host to update its forwarding table when the packet is routed on a wrong path. 
+
+ICMP DEBUGGING TOOLS  
+
+Two tools are used for debugging purpose.  
