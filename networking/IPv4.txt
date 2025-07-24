@@ -1,0 +1,41 @@
+Purpose of IPv4 Header Fields 
+
+Let’s see the purpose of various fields of IPv4 header. 
+
+Version: This tells the computer which Internet Protocol version being used, which in this case is IPv4. 
+
+Internet Header Length (IHL): It tells the length of the IP header of the internet packet. It is necessary for the receiving device in order to determine the start of the data portion of the packet. 
+
+Type of Service: It tells the computer about the desired quality of service. It is needed in prioritizing certain types of traffic or allocating network resources. 
+
+Total Length: It tells the computer about the total length of the internet packet including the header and the data. 
+
+Identification: It assists in identifying the original packet if it gets broken into smaller pieces. 
+
+Flags: It provides information regarding the fragmentation status of the packet. For example, whether the packet can be fragmented or has been fragmented. 
+
+Fragments Offset: With its help, a packet can be back together if it gets broken into smaller pieces, i.e., reassembly of packet at the receiving end. 
+
+Time to Live (TTL): It provides information on how long the packet can stay in the network before it is discarded. 
+
+Protocol: It identifies the type of transport layer protocol, such as TCP or UDP, used within the IP packet. 
+
+Header Checksum: It is mainly used to check whether the header part of the packet is correct, i.e., to detect errors in the IP header. 
+
+Source/Destination IP addresses: It gives information on where the packet is coming from (Source) and where the packet is going (Destination). 
+
+ 
+
+Significance of IPv4 Header 
+
+IPv4 is a critical component of the Internet infrastructure that plays a vital role in routing Internet traffic all over the globe. 
+
+One of the primary functions of the IPv4 header is Routing. The header contains the destination IP address, with which the router can easily forward packets to their next hop, which leads to the final destination. 
+
+The IPv4 header also contains the TTL field. With TTL, the maximum number of hops a packet can take before being discarded can be specified. This prevents the packet from circulating indefinitely in the network. 
+
+Another significant aspect of the IPv4 header is its role in packet fragmentation and reassembly. When a packet is transmitted over a network with a smaller MTU than the original packet size, the packet must be fragmented into smaller parts. The IPv4 header allows routers to reassemble these fragments into the original packet at the destination. 
+
+The IPv4 header is also crucial in packet error detection and correction. The header checksum field is mainly used to detect errors during the transmission process. If any error is detected, the packet can be discarded, and a request for re-transmission can be sent to the source. 
+
+ 
