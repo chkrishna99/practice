@@ -39,3 +39,24 @@ They are (1) Ping (2) Traceroute
 Ping: The ping program is used to find if a host is alive and responding.  
 
 The source host sends ICMP echo-request messages; the destination, if alive, responds with ICMP echo-reply messages.  
+The ping program sets the identifier field in the echo-request and echo-reply message and starts the sequence number from 0; this number is incremented by 1 each time a new message is sent.  
+
+The ping program can calculate the round-trip time.  
+
+It inserts the sending time in the data section of the message.  
+
+When the packet arrives, it subtracts the arrival time from the departure time to get the round-trip time (RTT).  
+
+$ ping google.com 
+
+Traceroute or Tracert  
+
+The traceroute program in UNIX or tracert in Windows can be used to trace the path of a packet from a source to the destination.  
+
+It can find the IP addresses of all the routers that are visited along the path.  
+
+The program is usually set to check for the maximum of 30 hops (routers) to be visited.  
+
+The number of hops in the Internet is normally less than this.  
+
+$ traceroute google.com 
