@@ -29,3 +29,13 @@ Redirection―Redirect messages are sent by the default router to inform the sou
 ICMP DEBUGGING TOOLS  
 
 Two tools are used for debugging purpose.  
+
+CMP DEBUGGING TOOLS  
+
+Two tools are used for debugging purpose.  
+
+They are (1) Ping (2) Traceroute  
+
+Ping: The ping program is used to find if a host is alive and responding.  
+
+The source host sends ICMP echo-request messages; the destination, if alive, responds with ICMP echo-reply messages.  
